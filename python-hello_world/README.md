@@ -2,10 +2,6 @@
 
 This project focuses on two pivotal aspects of software development: debugging and automation. By engaging with these tasks, you’ll learn how to harness the capabilities of ChatGPT to not only identify and resolve errors more efficiently but also to automate repetitive coding tasks, thereby increasing your productivity and improving the quality of your code.
 
-## Functionalities :
-
-
-
 ## Objectives :
 
 - `Debugging`: Understand the practical use of AI in identifying and solving coding errors. You will use ChatGPT to diagnose and correct bugs in provided code samples across multiple programming languages. This will enhance your problem-solving skills and understanding of common programming pitfalls in a diverse set of coding environments.
