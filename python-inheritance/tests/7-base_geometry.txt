@@ -1,0 +1,74 @@
+Test de la fonction ``nteger_validator`` en Python
+======================
+
+Cette fonction divise tous les éléments d'une matice
+-------------------
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+>>> bg = BaseGeometry()
+>>> isinstance(bg, BaseGeometry)
+True
+
+>>> hasattr(BaseGeometry, 'integer_validator')
+True
+
+>>> hasattr(BaseGeometry, 'area')
+True
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "age", -1)
+Traceback (most recent call last):
+  ...
+ValueError: age must be greater than 0
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "distance", -4)
+Traceback (most recent call last):
+  ...
+ValueError: distance must be greater than 0
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "age", 1)
+
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "age", True)
+Traceback (most recent call last):
+  ...
+TypeError: age must be an integer
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "age", "4")
+Traceback (most recent call last):
+  ...
+TypeError: age must be an integer
+
+>>> bg.area()
+Traceback (most recent call last):
+  ...
+Exception: area() is not implemented
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "age", (4,))
+Traceback (most recent call last):
+  ...
+TypeError: age must be an integer
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "age", [3])
+Traceback (most recent call last):
+  ...
+TypeError: age must be an integer
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "age")
+Traceback (most recent call last):
+  ...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "age", 0)
+Traceback (most recent call last):
+  ...
+ValueError: age must be greater than 0
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "age", {3, 4})
+Traceback (most recent call last):
+  ...
+TypeError: age must be an integer
+
+>>> BaseGeometry.integer_validator(BaseGeometry, "age", None)
+Traceback (most recent call last):
+  ...
+TypeError: age must be an integer
