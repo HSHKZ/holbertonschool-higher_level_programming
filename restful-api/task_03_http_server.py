@@ -9,8 +9,6 @@ import socketserver
 
 class Handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
-        class Handler(http.server.BaseHTTPRequestHandler):
-    def do_GET(self):
         '''handles GET requests'''
         if self.path == '/data':
             data = {"name": "John", "age": 30, "city": "New York"}
@@ -43,9 +41,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b'404 Not Found')
 
+
 PORT = 8000
 
 
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
     print("serving at port", PORT)
-    hhtpd.serve_forever()
+    httpd.serve_forever()
