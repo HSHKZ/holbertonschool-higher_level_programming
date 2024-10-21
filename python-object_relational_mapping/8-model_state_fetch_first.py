@@ -1,28 +1,25 @@
 #!/usr/bin/python3
-"""Lists all states with a name starting with N (upper N)"""
+"""
+Module that prints the first State object from the database `hbtn_0e_6_usa`.
+"""
 
-
-import MySQLdb
-import sys
-from model_state import Base, State
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
+import sys
 
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
+    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
                            .format(sys.argv[1], sys.argv[2], sys.argv[3]))
-    Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(State).first()
+    state = session.query(State).order_by(State.id).first()
 
     if state:
-        print(f'{state.id}: {state.name}')
+        print("{}: {}".format(state.id, state.name))
     else:
-        print('Nothing')
+        print("Nothing")
 
-    session.commit()
     session.close()
