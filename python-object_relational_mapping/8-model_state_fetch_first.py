@@ -18,7 +18,8 @@ if __name__ == "__main__":
     database_name = argv[3]
 
     # Create an engine to the MySQL database
-    engine = create_engine(f'mysql+mysqldb://{mysql_username}:{mysql_password}@localhost:3306/'
+    engine = create_engine(
+        f'mysql+mysqldb://{mysql_username}:{mysql_password}@localhost:3306/'
         f'{database_name}'
         )
 
