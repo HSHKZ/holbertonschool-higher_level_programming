@@ -31,12 +31,6 @@ if __name__ == "__main__":
         ORDER BY id ASC".format(sys.argv[4]))
 
     # Récupérer les résultats de la requête
-    query = cursor.fetchall()
-
-    # Exécuter une requête SQL
-    cursor.execute(query)
-
-    # Récupérer les résultats de la requête
     query_rows = cursor.fetchall()
 
     # Afficher les résultats
