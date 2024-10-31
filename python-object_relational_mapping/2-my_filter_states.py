@@ -1,31 +1,25 @@
 #!/usr/bin/python3
-"""
-Module that display all values in the states table
-of a database where name matches the argument.
-"""
 
-import MySQLdb
+"""lists all states that have a specific name"""
+
 import sys
+import MySQLdb
+
 
 if __name__ == "__main__":
-
-    database = MySQLdb.connect(
+    db = MySQLdb.connect(
         host="localhost",
-        port=3306,
         user=sys.argv[1],
         passwd=sys.argv[2],
-        database=sys.argv[3]
+        db=sys.argv[3],
+        port=3306
     )
-
-    cursor = database.cursor()
-
-    cursor.execute("""SELECT * FROM states
-                      WHERE name LIKE BINARY '{}'
-                      ORDER BY states.id
-                   """.format(sys.argv[4]))
-
-    for row in cursor.fetchall():
-        print(row)
-
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states WHERE name = '{}' \
+                    ORDER BY id ASC".format(sys.argv[4]))
+    states = cursor.fetchall()
+    for state in states:
+        if state[1] == sys.argv[4]:
+            print(state)
     cursor.close()
-    database.close()
+    db.close()
