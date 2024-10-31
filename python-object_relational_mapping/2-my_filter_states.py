@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 
 '''
-Display all states with a name starting with N (upper N) from the database hbtn_0e_0_usa.
-This script connects to a MySQL database using credentials provided as command-line arguments
+Display all states with a name starting with N (upper N)
+from the database hbtn_0e_0_usa.
+This script connects to a MySQL database
+using credentials provided as command-line arguments
 
-usage: ./2-my_filter_states.py <mysql_username> <mysql_password> <database_name>
+usage: ./2-my_filter_states.py
+<mysql_username> <mysql_password> <database_name>
 '''
 
 import MySQLdb
@@ -23,10 +26,13 @@ if __name__ == "__main__":
     # Créer un curseur pour exécuter des requêtes SQL
     cursor = db.cursor()
 
-    # Définir la requête SQL
-    query = ("SELECT * FROM states WHERE name"
-            "LIKE '{}' ORDER"
-            "BY id ASC;".format(sys.argv[4]))
+    # Exécuter une requête SQL
+    cursor.execute("SELECT * FROM states WHERE name = '{}' \
+        ORDER BY id ASC".format(sys.argv[4]))
+
+    # Récupérer les résultats de la requête
+    query = cursor.fetchall()
+
     # Exécuter une requête SQL
     cursor.execute(query)
 
@@ -35,7 +41,8 @@ if __name__ == "__main__":
 
     # Afficher les résultats
     for row in query_rows:
-        print(row)
+        if row[1] == sys.argv[4]:
+            print(row)
 
     # Fermer le curseur et la connexion
     cursor.close()

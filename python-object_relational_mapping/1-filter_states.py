@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 
 '''
-lists all states with a name starting with N (upper N) from the database hbtn_0e_0_usa.
-This script connects to a MySQL database using credentials provided as command-line arguments
-and retrieves all states from the 'states' table where the name starts with 'N', ordered by their ID.
+lists all states with a name starting with N (upper N)
+from the database hbtn_0e_0_usa.
+This script connects to a MySQL database
+using credentials provided as command-line arguments
+and retrieves all states from the 'states' table
+where the name starts with 'N', ordered by their ID.
 
 Usage:
     ./1-filter_states.py <mysql_username> <mysql_password> <database_name>
