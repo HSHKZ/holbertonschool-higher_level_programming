@@ -21,7 +21,10 @@ if __name__ == "__main__":
     state_name = sys.argv[4]
 
     # Create engine and bind it to the metadata of the Base class
-    engine = create_engine(f'mysql+mysqldb://{mysql_username}:{mysql_password}@localhost:3306/{database_name}')
+    engine = create_engine(
+        f'mysql+mysqldb://{mysql_username}:{mysql_password}@localhost:3306/'
+        f'{database_name}'
+        )
     Base.metadata.bind = engine
 
     # Create a configured "Session" class
